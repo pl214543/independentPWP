@@ -22,8 +22,8 @@ blurred = cv2.blur(grey, (1, 1))
 
 # employs the use of hough circles (cv2 predefined method)
 houghCircle = cv2.HoughCircles(blurred, cv2.HOUGH_GRADIENT,
-                               1, 20, param1=50, param2=30, minRadius=1,
-                               maxRadius=750)
+                               1, 20, param1=50, param2=30, minRadius=0,
+                               maxRadius=0)
 
 # if the circle created exists, common error when nothing is detected as none, so it flags errors
 if houghCircle is not None:
@@ -38,11 +38,11 @@ if houghCircle is not None:
         # creates the actual circle using the original image, points a and b, radius
         # original image, center coordinates, radius, color, thickness
         # the color is in bgr, so the g for green is set
-        cv2.circle(image, (a, b), r, (0, 255, 0), 5)
+        cv2.circle(image, (a, b), r, (0, 255, 0), 10)
 
         # does the same but changes the radius to 1 so that there is a center dot.
         # the color is in bgr so the r for red is set
-        cv2.circle(image, (a, b), 1, (0, 0, 255), 5)
+        cv2.circle(image, (a, b), 1, (0, 0, 255), 10)
 
         # displays the new image with overlay in a window named "Circle"
         cv2.imshow("Circle", image)
