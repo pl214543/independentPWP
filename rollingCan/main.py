@@ -20,13 +20,17 @@ currentFrame = video.get(cv2.CAP_PROP_POS_FRAMES)
 while (video.isOpened()):
     booleanReady, frame = video.read()
 
+    print(type(frame))
+    print(frame)
+
     if booleanReady == True:
 
         # this creates a new variable for the frame to be appended to an array
-        saveFrame = cv2.imread('video', frame)
+
+        num_saveFrame = cv2.imwrite('video.jpg', frame)
 
         # this appends this save variable to the numpy array
-        frame.append(saveFrame)
+        frame.append(num_saveFrame)
 
         # gets the next frame ready
         currentFrame = video.get(cv2.CAP_PROP_POS_FRAMES)
