@@ -1,4 +1,8 @@
-# https://stackoverflow.com/questions/41253939/how-to-create-array-of-frames-from-an-mp4-with-opencv-for-python
+# Plan
+# Turn video into many frames and save each frame into an array
+# Put houghcircles onto each frame
+# Add all of these edited frames into a new array
+# put all of these frames together to make a new and final video
 
 # required libraries
 import cv2
@@ -30,7 +34,7 @@ while (video.isOpened()):
         num_saveFrame = cv2.imwrite('video.jpg', frame)
 
         # this appends this save variable to the numpy array
-        frame.append(num_saveFrame)
+        frames.append(num_saveFrame)
 
         # gets the next frame ready
         currentFrame = video.get(cv2.CAP_PROP_POS_FRAMES)
@@ -48,6 +52,9 @@ while (video.isOpened()):
 
         # stop
         break
+
+print("\n\n\n\n\n\n\n\n\nTest\n\n\n\n\n\n\n\n")
+print(frames)
 
     # # makes it grayscale so that the hough circles method works
     # gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
