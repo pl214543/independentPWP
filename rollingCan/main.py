@@ -29,12 +29,8 @@ while (video.isOpened()):
 
     if booleanReady == True:
 
-        # this creates a new variable for the frame to be appended to an array
-
-        num_saveFrame = cv2.imwrite('video.jpg', frame)
-
-        # this appends this save variable to the numpy array
-        frames.append(num_saveFrame)
+        # this appends this the frame to the numpy array
+        frames.append(frame)
 
         # gets the next frame ready
         currentFrame = video.get(cv2.CAP_PROP_POS_FRAMES)
@@ -54,7 +50,9 @@ while (video.isOpened()):
         break
 
 print("\n\n\n\n\n\n\n\n\nTest\n\n\n\n\n\n\n\n")
-print(frames)
+print(len(frames))
+print(frames[45])
+video = cv2.imwrite("video.jpg", frames[90])
 
     # # makes it grayscale so that the hough circles method works
     # gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
