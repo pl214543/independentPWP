@@ -8,6 +8,8 @@
 # maybe grayscale and then remove all darker colors (+ dodge and burn)
 # https://www.geeksforgeeks.org/filter-color-with-opencv/
 # https://www.geeksforgeeks.org/python-opencv-capture-video-from-camera/ for capturing video and editing
+# https://docs.opencv.org/4.x/d9/d61/tutorial_py_morphological_ops.html
+# maybe what I can do is cut out a part, edit it, and put it back onto the frame
 
 # import required libraries
 import cv2
@@ -30,8 +32,21 @@ while True:
     # canny = cv2.Canny(blurred, 100, 200)
 
     # https://www.geeksforgeeks.org/filter-color-with-opencv/
-    ranged = cv2.inRange(blurred, 125, 255)
+    ranged = cv2.inRange(blurred, 0, 115)
     result = cv2.bitwise_and(blurred, blurred, mask=ranged)
+
+    # https://www.geeksforgeeks.org/removing-black-background-and-make-transparent-using-python-opencv/
+    # https://www.tutorialspoint.com/removing-black-background-and-make-transparent-using-opencv-python
+    # make black transparent
+    # then make the lines black
+    # make exclusion rectangle
+
+    # https://www.tutorialspoint.com/how-to-mask-an-image-in-opencv-python
+
+    cut = num.zeros(result.shape[:2], num.uint8)
+    cut[100:250, 150:450] = 0
+
+    cutOut = cv2.bitwise_and(result, result, mask=cut)
 
     cv2.imshow('Frame', result)
 
